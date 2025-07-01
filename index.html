@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Vacacional Docente</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 400px;
+      position: relative;
+    }
+    img.logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 60px;
+      height: 60px;
+    }
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+    label, input, button {
+      display: block;
+      margin: 10px auto;
+      width: 90%;
+    }
+    input {
+      padding: 10px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 10px;
+      background-color: #004aad;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .resultado {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .advertencia {
+      color: #d90000;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo gremio.png" alt="Logo Gremio Docente" class="logo">
+    <h1>Calculadora Vacaciones Docentes</h1>
+    <label for="salario">Ingrese su salario neto quincenal (sin deducciones):</label>
+    <input type="number" id="salario" placeholder="Ej: 850,00">
+    <button onclick="calcularVacaciones()">Calcular Monto Vacacional</button>
+    <div class="advertencia">*Debe ingresar su ingreso neto quincenal sin deducciones.</div>
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularVacaciones() {
+      const salario = parseFloat(document.getElementById('salario').value);
+      if (isNaN(salario) || salario <= 0) {
+        document.getElementById('resultado').innerText = 'Por favor, ingrese un salario válido.';
+        return;
+      }
+
+      // 1 mes = 2 quincenas -> salario diario = quincena / 15
+      const salarioDiario = salario / 15;
+      const montoVacacional = salarioDiario * 88;
+
+      document.getElementById('resultado').innerText = `Monto estimado de vacaciones: Bs ${montoVacacional.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
