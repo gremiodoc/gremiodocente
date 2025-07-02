@@ -18,6 +18,7 @@
     .container {
       background: white;
       padding: 30px;
+      padding-top: 80px;
       border-radius: 15px;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
       text-align: center;
@@ -27,9 +28,10 @@
     img.logo {
       position: absolute;
       top: 10px;
-      left: 10px;
-      width: 60px;
-      height: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 70px;
     }
     h1 {
       font-size: 1.4rem;
@@ -84,7 +86,6 @@
         return;
       }
 
-      // 1 mes = 2 quincenas -> salario diario = quincena / 15
       const salarioDiario = salario / 15;
       const montoVacacional = salarioDiario * 88;
 
