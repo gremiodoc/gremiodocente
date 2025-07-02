@@ -55,6 +55,10 @@
       border-radius: 5px;
       cursor: pointer;
     }
+    .reset-btn {
+      background-color: #d90000;
+      margin-top: 5px;
+    }
     .resultado {
       margin-top: 20px;
       font-size: 1.2rem;
@@ -74,6 +78,7 @@
     <label for="salario">Ingrese su salario neto quincenal (sin deducciones):</label>
     <input type="number" id="salario" placeholder="Ej: 850,00">
     <button onclick="calcularVacaciones()">Calcular Monto Vacacional</button>
+    <button class="reset-btn" onclick="resetearFormulario()">Reiniciar</button>
     <div class="advertencia">*Debe ingresar su ingreso neto quincenal sin deducciones.</div>
     <div class="resultado" id="resultado"></div>
   </div>
@@ -90,6 +95,11 @@
       const montoVacacional = salarioDiario * 88;
 
       document.getElementById('resultado').innerText = `Monto estimado de vacaciones: Bs ${montoVacacional.toFixed(2)}`;
+    }
+
+    function resetearFormulario() {
+      document.getElementById('salario').value = '';
+      document.getElementById('resultado').innerText = '';
     }
   </script>
 </body>
