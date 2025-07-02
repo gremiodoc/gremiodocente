@@ -64,6 +64,11 @@
       font-size: 1.2rem;
       font-weight: bold;
     }
+    .detalle {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #333;
+    }
     .advertencia {
       color: #d90000;
       font-size: 0.9rem;
@@ -81,6 +86,7 @@
     <button class="reset-btn" onclick="resetearFormulario()">Reiniciar</button>
     <div class="advertencia">*Debe ingresar su ingreso neto quincenal sin deducciones.</div>
     <div class="resultado" id="resultado"></div>
+    <div class="detalle" id="detalle"></div>
   </div>
 
   <script>
@@ -88,18 +94,27 @@
       const salario = parseFloat(document.getElementById('salario').value);
       if (isNaN(salario) || salario <= 0) {
         document.getElementById('resultado').innerText = 'Por favor, ingrese un salario válido.';
+        document.getElementById('detalle').innerText = '';
         return;
       }
 
       const salarioDiario = salario / 15;
       const montoVacacional = salarioDiario * 88;
+      const bonoEspecial = 1460;
+      const bonoVacacionesPatria = 1825;
+      const total = montoVacacional + bonoEspecial + bonoVacacionesPatria;
 
-      document.getElementById('resultado').innerText = `Monto estimado de vacaciones: Bs ${montoVacacional.toFixed(2)}`;
+      document.getElementById('resultado').innerText = `Total estimado a cobrar: Bs ${total.toFixed(2)}`;
+      document.getElementById('detalle').innerHTML = `Desglose:<br>
+        Vacaciones (88 días): Bs ${montoVacacional.toFixed(2)}<br>
+        Bono especial: Bs ${bonoEspecial.toFixed(2)}<br>
+        Bono especial de vacaciones (Patria): Bs ${bonoVacacionesPatria.toFixed(2)}`;
     }
 
     function resetearFormulario() {
       document.getElementById('salario').value = '';
       document.getElementById('resultado').innerText = '';
+      document.getElementById('detalle').innerText = '';
     }
   </script>
 </body>
