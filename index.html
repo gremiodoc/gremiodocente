@@ -100,14 +100,14 @@
 
       const salarioDiario = salario / 15;
       const montoVacacional = salarioDiario * 88;
-      const bonoEspecial = 1460;
-      const bonoVacacionesPatria = 1825;
+      const bonoEspecial = 4320; // 40 USD al BCV
+      const bonoVacacionesPatria = 5400; // 50 USD al BCV
       const total = montoVacacional + bonoEspecial + bonoVacacionesPatria;
 
       document.getElementById('resultado').innerText = `Total estimado a cobrar: Bs ${total.toFixed(2)}`;
       document.getElementById('detalle').innerHTML = `Desglose:<br>
         Vacaciones (88 días): Bs ${montoVacacional.toFixed(2)}<br>
-        Bono especial: Bs ${bonoEspecial.toFixed(2)}<br>
+        Bono especial (MPPE): Bs ${bonoEspecial.toFixed(2)}<br>
         Bono especial de vacaciones (Patria): Bs ${bonoVacacionesPatria.toFixed(2)}`;
     }
 
